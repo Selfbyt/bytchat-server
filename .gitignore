@@ -1,3 +1,4 @@
+
 # The directory Mix will write compiled artifacts to.
 /_build/
 
@@ -24,4 +25,8 @@ erl_crash.dump
 
 # Ignore package tarball (built via "mix hex.build").
 bytchat-*.tar
-
+erl_crash.dump
+*.ez
+*.beam
+/config/*.secret.exs
+.elixir_ls/

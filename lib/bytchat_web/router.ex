@@ -25,4 +25,7 @@ defmodule BytchatWeb.Router do
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
+  # socket "/socket", BytChatWeb.UserSocket,
+  # websocket: true,
+  # longpoll: false
 end

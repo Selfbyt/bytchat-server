@@ -1,5 +1,6 @@
 defmodule BytchatWeb.Router do
   use BytchatWeb, :router
+  import Phoenix.Endpoint, only: [socket: 3]
 
   pipeline :api do
     plug :accepts, ["json"]
@@ -8,7 +9,9 @@ defmodule BytchatWeb.Router do
   scope "/api", BytchatWeb do
     pipe_through :api
   end
-
+  socket "/socket", BytChatWeb.UserSocket,
+  websocket: true,
+  longpoll: false
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:bytchat, :dev_routes) do
     # If you want to use the LiveDashboard in production, you should put
@@ -25,7 +28,4 @@ defmodule BytchatWeb.Router do
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
-  # socket "/socket", BytChatWeb.UserSocket,
-  # websocket: true,
-  # longpoll: false
 end

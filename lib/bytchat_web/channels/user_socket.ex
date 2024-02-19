@@ -51,5 +51,14 @@ defmodule BytchatWeb.UserSocket do
   # Returning `nil` makes this socket anonymous.
   @impl true
   def id(_socket), do: nil
+
+  @impl true
+  def child_spec(opts) do
+    %{
+      id: __MODULE__,
+      start: {Phoenix.Socket, :start_link, [__MODULE__, opts]}
+    }
+  end
   channel "chat:*", BytChatWeb.ChatChannel
+  channel "community:*", BytChatWeb.ChatChannel
 end
